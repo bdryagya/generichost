@@ -2,6 +2,8 @@
 
 namespace Bakhari\GenericHost;
 
+use Exception;
+
 use Bakhari\Console\Console;
 use Bakhari\Console\Streams\FileOutputStream;
 
