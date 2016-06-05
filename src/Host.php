@@ -35,7 +35,7 @@ class Host
     /**
      * Module map
      *
-     * @var array
+     * @var string 
      */
     protected $module_map = __DIR__ . '/Modules/map.php';
 
@@ -50,8 +50,6 @@ class Host
         if(isset($config)) {
 
             $this->config = $config;
-
-            $load_modules = null;
 
             /*
              * Remove configs not related to console
@@ -75,9 +73,9 @@ class Host
              */
             if(isset($this->config['load_modules'])) {
 
-                foreach($load_modules as $module_name => $module_extra_config) {
+                foreach($this->config['load_modules'] as $module_name => $module_extra_config) {
 
-                    $this->loadModule($module_name, $module_config_extra);
+                    $this->loadModule($module_name, $module_extra_config);
                 }
             }
 
