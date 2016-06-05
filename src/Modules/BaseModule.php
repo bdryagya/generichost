@@ -4,6 +4,7 @@ namespace Bakhari\GenericHost\Modules;
 
 use Bakhari\Console\Contracts\Console;
 use Bakhari\GenericHost\Contracts\Module;
+use Bakhari\GenericHost\Builders\Command as CommandBuilder;
 
 class BaseModule implements Module
 {
@@ -15,6 +16,13 @@ class BaseModule implements Module
     protected $console;
 
     /**
+     * Template Directory
+     *
+     * @var string
+     */
+    protected $template_dir = __DIR__ . '/../Templates';
+
+    /**
      * Create the Filter Module
      *
      * @param   Bakhari\GenericHost\Contracts\Console
@@ -23,6 +31,13 @@ class BaseModule implements Module
     public function __construct(Console $console, $module_extra_config = null)
     {
         $this->console = $console;
+
+        $this->commandBuilder = 
+
+            new CommandBuilder([
+
+                'template_dir' => $this->template_dir
+            ]);
     }
 
     /**
