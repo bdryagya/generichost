@@ -1,0 +1,19 @@
+{
+    "name": "bakhari/genericdevice",
+    "description": "Generic Network Device",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yagya Chaudhary",
+            "email": "mail@bdryagya.com.np"
+        }
+    ],
+    "require": {
+        "bakhari/console": "^0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bakhari\\GenericHost\\": "src/"
+        }
+    }
+}
