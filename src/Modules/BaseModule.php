@@ -3,6 +3,7 @@
 namespace Bakhari\GenericHost\Modules;
 
 use Bakhari\Console\Contracts\Console;
+use Bakhari\Console\Contracts\Command;
 use Bakhari\GenericHost\Contracts\Module;
 use Bakhari\GenericHost\Builders\Command as CommandBuilder;
 
