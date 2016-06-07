@@ -52,12 +52,9 @@ class Command
 
             if(file_exists($template_file)) {
 
-                $template = require $template_file;
+                $command = require $template_file;
 
-                $append = isset($config['prefix']) ? $config['prefix'] . ' ' : null;
-
-                // Convert template to list of lines
-                $this->toLiner($template, $append);
+                $this->list = $command;
                 
             } else {
 
@@ -72,32 +69,6 @@ class Command
         }
         
         return new Command($this->list);
-    }
-
-    /**
-     * Build shaper command from template
-     *
-     * @param   array   $config
-     * @param   string  $append
-     *
-     * @return  void
-     */
-    protected function toLiner($config, $append = null)
-    {
-        if(is_array($config)) {
-
-            foreach($config as $key => $value) {
-
-                $key = ! is_numeric($key) ? $key . ' ': null;
-                $this->toLiner($value, $append . $key);
-
-            }
-        } else {
-
-            $command = $append . $config;
-
-            array_push($this->list, $command);
-        }
     }
 
     /**
