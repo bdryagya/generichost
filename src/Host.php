@@ -78,18 +78,6 @@ class Host
                     $this->loadModule($module_name, $module_extra_config);
                 }
             }
-
-            /*
-             * We'll output to file, if fileoutput is set to true
-             */
-            if(isset($this->config['file_output'])) {
-                $this->console
-                    ->getStreamManager()
-                    ->pushOutputStream(
-                        new FileOutputStream($this->config['file_output'])
-                    );
-            }
-            
         }
     }
 
