@@ -2,6 +2,8 @@
 
 namespace Bakhari\GenericHost\Modules;
 
+use ReflectionClass;
+
 use Bakhari\Console\Contracts\Console;
 use Bakhari\Console\Contracts\Command;
 use Bakhari\GenericHost\Contracts\Module;
@@ -75,4 +77,26 @@ class BaseModule implements Module
             ]);
     }
 
+    /**
+     * Overload the call
+     *
+     * Calculates command template path using class_name and method_name
+     * builds command and executes
+     */
+    public function __call($method, $args)
+    {
+        $reflection = new ReflectionClass($this);
+
+        $config     = $args[0];
+        $dry_run    = isset($args[1]) ? $args[1] : false;
+        $wait       = isset($args[2]) ? $args[2] : 10000;
+        $template   = $reflection->getShortName() . '.'. $method;
+
+        $command = $this->commandBuilder->make([
+            'template'  => $template,
+            'config'    => $config,
+        ]);
+
+        return $this->exec($command, $dry_run, $wait);
+    }
 }
