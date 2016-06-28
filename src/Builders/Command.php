@@ -4,7 +4,7 @@ namespace Bakhari\GenericHost\Builders;
 
 use Exception;
 
-use Bakhari\Console\Command;
+use Bakhari\Console\Command as ConsoleCommand;
 
 class Command 
 {
@@ -68,7 +68,7 @@ class Command
             $this->list = array($config);
         }
         
-        return new Command($this->list);
+        return new ConsoleCommand($this->list);
     }
 
     /**
